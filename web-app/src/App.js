@@ -2,15 +2,24 @@ import React, {Component, Fragment} from 'react';
 import Helmet from 'react-helmet';
 import styled from 'react-emotion';
 import Header from './components/header/header';
-import Footer from './components/footer/footer';
+import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
+
+const RootContainer = styled('div')`
+    display:flex;
+    flex-direction:column;
+    flex: 1  100%;
+    overflow-y: auto;
+`;
 
 const AppContainer = styled('div')`
     outline:1px solid red;
     margin: 0 5rem 0 5rem;
-    height:100%;
     display:flex;
     flex-direction:column;
-    flex:1;
+    flex: 1 100%;
+    min-height:1200px;
 `;
 
 class App extends Component {
@@ -22,11 +31,14 @@ class App extends Component {
                     <title>Jambsik Movies</title>
                     <link rel="canonical" href="http://mysite.com/example"/>
                 </Helmet>
-                <Header/>
-                <AppContainer>
-                    <h1>hello world</h1>
-                </AppContainer>
-                <Footer/>
+                <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
+                    <Header/>
+                    <RootContainer>
+                        <AppContainer>
+                            <h1>hello world</h1>
+                        </AppContainer>
+                    </RootContainer>
+                </MuiThemeProvider>
             </Fragment>
         );
     }
