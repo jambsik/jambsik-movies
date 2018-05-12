@@ -5,6 +5,8 @@ import Header from './components/header/header';
 import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import RaisedButton from 'material-ui/RaisedButton';
+import {connect} from 'react-redux'
 
 const RootContainer = styled('div')`
     display:flex;
@@ -32,16 +34,28 @@ class App extends Component {
                     <link rel="canonical" href="http://mysite.com/example"/>
                 </Helmet>
                 <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
-                    <Header/>
-                    <RootContainer>
-                        <AppContainer>
-                            <h1>hello world</h1>
-                        </AppContainer>
-                    </RootContainer>
+                    <Fragment>
+                        <Header/>
+                        <RootContainer>
+                            <AppContainer>
+                                <h1>hello world</h1>
+                                <RaisedButton label="Primary" primary={true}
+                                              onClick={
+                                                  () => alert()
+                                              }
+                                />
+                            </AppContainer>
+                        </RootContainer>
+                    </Fragment>
                 </MuiThemeProvider>
             </Fragment>
         );
     }
 }
 
-export default App;
+const mapStateProps = state => {
+    console.log();
+    return state;
+};
+const AppConnected = connect(mapStateProps)(App);
+export default AppConnected;
