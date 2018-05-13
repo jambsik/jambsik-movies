@@ -32,7 +32,9 @@ class ConnectedPopularMovies extends Component {
     render() {
         const {popularList} = this.props;
         return (
-            <CardList items={popularList}></CardList>
+            <CardList items={popularList}
+                      imageNameProperty='backdrop_path'
+                      imageUrl={Api.getImage()}></CardList>
         );
     }
 }

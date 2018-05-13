@@ -15,7 +15,6 @@ const RootContainer = styled('div')`
 `;
 
 const AppContainer = styled('div')`
-    outline:1px solid red;
     margin: 0 5rem 0 5rem;
     display:flex;
     flex-direction:column;

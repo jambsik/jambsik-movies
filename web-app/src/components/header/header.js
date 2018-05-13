@@ -3,10 +3,9 @@ import styled from 'react-emotion';
 import DefaultLocale from '../../common/locale/default.locale';
 
 const HeaderContainer = styled('div')`
-    outline: 1px solid white;
     height: 3.75rem;
     padding: 1.5rem;
-    background:rgba(0, 0, 0, 0.58);
+    background:rgba(20, 20,2 0, 1);
     font-family: 'Lobster', cursive;
 `;
 const H1Styled = styled('h1')`

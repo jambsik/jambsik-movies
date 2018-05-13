@@ -20,4 +20,8 @@ export class Api {
         return this._method('GET', `${this._movie_url('movie/popular')}&page=${page}`, opts)
             .then(res => res.json());
     }
+
+    static getImage(size = 'w500') {
+        return `${config.API_MOVIE_IMAGES_URL}/${size}`;
+    }
 }
