@@ -3,7 +3,10 @@ import {TYPES} from '../actions/popular.actions';
 const initialState = {
     popularList: [],
     isLoaded: false,
-    askRetry: false
+    askRetry: false,
+    page: 0,
+    total_results: 0,
+    total_page: 0
 };
 
 const popularReducer = (state = initialState, action) => {
@@ -16,17 +19,22 @@ const popularReducer = (state = initialState, action) => {
         case TYPES.LOADED:
             return {
                 ...state,
-                popularList: action.payload,
-                isLoaded: true
+                popularList: action.payload.results,
+                isLoaded: true,
+                page: action.payload.page,
+                total_results: action.payload.total_results,
+                total_page: action.payload.total_page
             };
         case TYPES.FAILED:
-            const pepe = {
+            return {
                 ...state,
                 isLoaded: true,
                 popularList: [],
-                askRetry: true
+                askRetry: true,
+                page: 0,
+                total_results: 0,
+                total_page: 0
             };
-            return pepe;
         default:
             return state;
     }

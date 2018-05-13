@@ -7,20 +7,29 @@ describe('@Popular reducer', () => {
         expect(popularReducer(undefined, {})).toEqual({
             popularList: [],
             isLoaded: false,
-            askRetry: false
+            askRetry: false,
+            page: 0,
+            total_results: 0,
+            total_page: 0
         });
     });
     it(`Should handle ${TYPES.BEFORE_LOADED}`, () => {
         expect(popularReducer({
             popularList: [],
             isLoaded: false,
-            askRetry: false
+            askRetry: false,
+            page: 0,
+            total_results: 0,
+            total_page: 0
         }, {
             type: TYPES.BEFORE_LOADED,
         })).toEqual({
             popularList: [],
             isLoaded: false,
-            askRetry: false
+            askRetry: false,
+            page: 0,
+            total_results: 0,
+            total_page: 0
         });
     });
 
@@ -48,11 +57,19 @@ describe('@Popular reducer', () => {
             askRetry: false
         }, {
             type: TYPES.LOADED,
-            payload: popularList
+            payload: {
+                results: popularList,
+                page: 0,
+                total_results: 1,
+                total_page: 1
+            }
         })).toEqual({
             popularList,
             isLoaded: true,
-            askRetry: false
+            askRetry: false,
+            page: 0,
+            total_results: 1,
+            total_page: 1
         });
     });
     it(`Should handle ${TYPES.FAILED}`, () => {
@@ -61,7 +78,10 @@ describe('@Popular reducer', () => {
         })).toEqual({
             popularList: [],
             isLoaded: true,
-            askRetry: true
+            askRetry: true,
+            page: 0,
+            total_results: 0,
+            total_page: 0
         });
     });
 
