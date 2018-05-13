@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {JmbFetch} from '../../common/request/jmb-fetch';
+import {Api} from '../../Api/Api';
 import {beforeLoaded, loaded} from '../../store/actions/popular.actions';
 import CardList from '../../components/cards-list/card-list';
 
@@ -23,7 +23,7 @@ class ConnectedPopularMovies extends Component {
 
     getMovies() {
         this.props.beforeLoadedPopularMovies();
-        JmbFetch.get(`http://localhost:8181/api/movies/popular?page=${this.props.page}`)
+        Api.getMovies(this.props.page)
             .then(data => {
                 this.props.loadedPopularMovies(data);
             });
