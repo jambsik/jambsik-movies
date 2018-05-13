@@ -8,7 +8,7 @@ describe('@Popular reducer', () => {
             popularList: [],
             isLoaded: false,
             askRetry: false,
-            page: 0,
+            page: 1,
             total_results: 0,
             total_page: 0
         });
@@ -18,7 +18,7 @@ describe('@Popular reducer', () => {
             popularList: [],
             isLoaded: false,
             askRetry: false,
-            page: 0,
+            page: 1,
             total_results: 0,
             total_page: 0
         }, {
@@ -27,7 +27,7 @@ describe('@Popular reducer', () => {
             popularList: [],
             isLoaded: false,
             askRetry: false,
-            page: 0,
+            page: 1,
             total_results: 0,
             total_page: 0
         });
@@ -59,7 +59,7 @@ describe('@Popular reducer', () => {
             type: TYPES.LOADED,
             payload: {
                 results: popularList,
-                page: 0,
+                page: 1,
                 total_results: 1,
                 total_page: 1
             }
@@ -67,7 +67,7 @@ describe('@Popular reducer', () => {
             popularList,
             isLoaded: true,
             askRetry: false,
-            page: 0,
+            page: 1,
             total_results: 1,
             total_page: 1
         });

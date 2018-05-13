@@ -12,8 +12,7 @@ describe('@Popular actions', () => {
 
     it(`beforeLoaded exec action`, () => {
         expect(actions.beforeLoaded()).toEqual({
-            type: actions.TYPES.BEFORE_LOADED,
-            payload: []
+            type: actions.TYPES.BEFORE_LOADED
         });
     });
 
@@ -35,9 +34,19 @@ describe('@Popular actions', () => {
         popularObj.overview = 'Believing they have left behind shadowy figures from their past, newlyweds Christian and Ana fully embrace an inextricable connection and shared life of luxury. But just as she steps into her role as Mrs. Grey and he relaxes into an unfamiliar stability, new threats could jeopardize their happy ending before it even begins.';
         popularObj.release_date = '2018-02-07';
         popularList.push(popularObj);
-        expect(actions.loaded(popularList)).toEqual({
+        expect(actions.loaded({
+            popularList,
+            page: 1,
+            total_results: 1,
+            total_page: 1
+        })).toEqual({
             type: actions.TYPES.LOADED,
-            payload: popularList
+            payload: {
+                popularList,
+                page: 1,
+                total_results: 1,
+                total_page: 1
+            }
         });
     });
 

@@ -4,7 +4,7 @@ const initialState = {
     popularList: [],
     isLoaded: false,
     askRetry: false,
-    page: 0,
+    page: 1,
     total_results: 0,
     total_page: 0
 };
@@ -14,7 +14,8 @@ const popularReducer = (state = initialState, action) => {
         case TYPES.BEFORE_LOADED:
             return {
                 ...state,
-                isLoaded: false
+                isLoaded: false,
+                popularList: []
             };
         case TYPES.LOADED:
             return {
