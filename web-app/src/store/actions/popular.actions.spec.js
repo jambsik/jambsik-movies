@@ -4,9 +4,10 @@ import {PouplarModel} from '../../models/popular.model';
 describe('@Popular actions', () => {
     it('Check actions types', () => {
         expect(actions.TYPES).toEqual({
-            BEFORE_LOADED: 'BEFORE_LOADED',
-            LOADED: 'LOADED',
-            FAILED: 'FAILED'
+            BEFORE_LOADED: 'BEFORE_LOADED_POPULAR_LIST',
+            LOADED: 'LOADED_POPULAR_LIST',
+            FAILED: 'FAILED_POPULAR_LIST',
+            SET_PAGE: 'SET_PAGE_POPULAR_LIST'
         });
     });
 
