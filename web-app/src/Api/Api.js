@@ -21,7 +21,7 @@ export class Api {
             .then(res => res.json());
     }
 
-    static getImage(size = 'w500') {
+    static getImageUrl(size = 'w500') {
         return `${config.API_MOVIE_IMAGES_URL}/${size}`;
     }
 }

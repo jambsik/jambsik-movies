@@ -66,10 +66,10 @@ class ConnectedPopularMovies extends Component {
                 {this.renderPagination()}
                 <CardList items={popularList}
                           imageNameProperty='backdrop_path'
-                          imageUrl={Api.getImage()}></CardList>
+                          imageUrl={Api.getImageUrl()}></CardList>
                 {this.renderPagination()}
             </Fragment>
-        );
+        ); 
     }
 }
 
