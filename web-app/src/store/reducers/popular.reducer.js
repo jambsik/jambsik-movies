@@ -1,10 +1,16 @@
 import {TYPES} from '../actions/popular.actions';
 
 const initialState = {
+    filter: '',
     popularList: [],
+    moviesAutoCompleteList: [],
+    isAutoCompleteLoaded: true,
+    isMovieByAutoComplete: false,
     isLoaded: false,
     askRetry: false,
-    page: 0,
+    movieSelected: null,
+    page: 1,
+    offset: 0,
     total_results: 0,
     total_pages: 0,
     limit: 1
@@ -34,7 +40,46 @@ const popularReducer = (state = initialState, action) => {
         case TYPES.SET_PAGE:
             return {
                 ...state,
-                page: action.payload.page
+                page: action.payload.page,
+                offset: action.payload.page - 1,
+            };
+        case TYPES.SET_FILTER_MOVIES_AUTOCOMPLETE:
+            return {
+                ...state,
+                movieSelected: null,
+                filter: action.payload.filter
+            };
+        case TYPES.BEFORE_MOVIES_AUTOCOMPLETE:
+            return {
+                ...state,
+                isAutoCompleteLoaded: false
+            };
+        case TYPES.LOADED_MOVIES_AUTOCOMPLETE:
+            return {
+                ...state,
+                isAutoCompleteLoaded: true,
+                moviesAutoCompleteList: action.payload.results
+            };
+        case TYPES.SET_CURRENT_MOVIE_SELECTED:
+            return {
+                ...state,
+                moviesAutoCompleteList: [],
+                movieSelected: action.payload.movie
+            };
+        case TYPES.SHOW_MOVIE_FROM_AUTOCOMPLETE:
+            return {
+                ...state,
+                isMovieByAutoComplete: true,
+                popularList: [action.payload]
+            };
+        case TYPES.CLEAR_MOVIE_FROM_AUTOCOMPLETE:
+            return {
+                ...state,
+                filter: '',
+                movieSelected: null,
+                moviesAutoCompleteList: [],
+                isMovieByAutoComplete: false,
+                popularList: []
             };
         default:
             return state;

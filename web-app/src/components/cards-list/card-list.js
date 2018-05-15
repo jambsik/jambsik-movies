@@ -47,9 +47,9 @@ class CardList extends Component {
                     style={gridListStyle}
                 >
                     {
-                        this.props.items.map((tile) => {
+                        this.props.items.map((tile, index) => {
                                 return (
-                                    <GridTile key={tile.title}
+                                    <GridTile key={`${tile.title}_${index}`}
                                               title={tile.title}
                                     >
                                         {this.renderImage(tile)}

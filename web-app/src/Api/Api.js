@@ -24,4 +24,9 @@ export class Api {
     static getImageUrl(size = 'w500') {
         return `${config.API_MOVIE_IMAGES_URL}/${size}`;
     }
+
+    static popularListSearch(filter, page) {
+        return this._method('GET', `${this._movie_url('search/movie')}&page=${page}&query=${filter}&sort_by=popularity.desc`)
+            .then(res => res.json());
+    }
 }

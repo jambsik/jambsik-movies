@@ -1,10 +1,14 @@
 import React, {Component, Fragment} from 'react';
 import {connect} from 'react-redux';
 import {Api} from '../../Api/Api';
-import {beforeLoaded, loaded, setPage} from '../../store/actions/popular.actions';
+import * as Actions from '../../store/actions/popular.actions';
 import CardList from '../../components/cards-list/card-list';
 import FlatPagination from 'material-ui-flat-pagination';
 import styled from 'react-emotion';
+import AutoComplete from 'material-ui/AutoComplete';
+import SearchIcon from 'material-ui/svg-icons/action/search'
+import CloseIcon from 'material-ui/svg-icons/navigation/close'
+import DefaultLocale from '../../common/locale/default.locale';
 
 const PaginationContainer = styled('div')`   
     display:flex;
@@ -12,25 +16,35 @@ const PaginationContainer = styled('div')`
     flex-direction: row;
     justify-content: flex-end;
 `;
+const SearcherContainer = styled('div')`   
+    display:flex;
+    width:100%;
+    flex-direction: row;
+    align-items:baseline;
+    width: 30%;
+    margin-left: 1.5rem;
+    svg{
+        cursor:pointer;
+    }
+`;
 
-const mapStateProps = state => ({
-    popularList: state.popularReducer.popularList,
-    page: state.popularReducer.page,
-    total_pages: state.popularReducer.total_pages,
-    total_results: state.popularReducer.total_results,
-    isLoaded: state.popularReducer.isLoaded,
-    limit: state.popularReducer.limit
-});
+const mapStateProps = state => (state.popularReducer);
 const mapDispatchProps = dispatch => ({
-    beforeLoadedPopularMovies: () => dispatch(beforeLoaded()),
-    loadedPopularMovies: data => dispatch(loaded(data)),
-    setPopularPage: page => dispatch(setPage(page))
+    beforeLoadedPopularMovies: () => dispatch(Actions.beforeLoaded()),
+    loadedPopularMovies: data => dispatch(Actions.loaded(data)),
+    setPopularPage: page => dispatch(Actions.setPage(page)),
+    setCurrentMovieSelected: movie => dispatch(Actions.setCurrentMovieSelected(movie)),
+    setFilterMoviesAutoComplete: filter => dispatch(Actions.setFilterMoviesAutoComplete(filter)),
+    beforeMoviesAutoComplete: () => dispatch(Actions.beforeMoviesAutoComplete()),
+    loadedMoviesAutoComplete: data => dispatch(Actions.loadedMoviesAutoComplete(data)),
+    showMovieFromAutoComplete: movie => dispatch(Actions.showMovieFromAutoComplete(movie)),
+    clearMovieFromAutoComplete: () => dispatch(Actions.clearMovieFromAutoComplete())
 });
 
 class ConnectedPopularMovies extends Component {
     constructor(props) {
         super(props);
-        this.getMovies(this.props.page + 1);
+        this.getMovies(this.props.page);
     }
 
     getMovies(page) {
@@ -41,35 +55,97 @@ class ConnectedPopularMovies extends Component {
             });
     }
 
+    getMoviesBySearch() {
+        this.props.beforeMoviesAutoComplete();
+        Api.popularListSearch(this.props.filter)
+            .then(data => this.props.loadedMoviesAutoComplete(data));
+    }
+
     setPage(offset) {
-        this.props.setPopularPage(offset);
-        this.getMovies(offset + 1);
+        const page = offset + 1;
+        this.props.setPopularPage(page);
+        this.getMovies(page);
+    }
+
+    handleUpdateInput(filter) {
+        this.props.setFilterMoviesAutoComplete(filter);
+        if (this.props.filter && this.props.filter.length >= 2) {
+            this.getMoviesBySearch();
+        }
+    }
+
+    get dataSourceConfig() {
+        return {
+            text: 'original_title',
+            value: 'id'
+        };
+    }
+
+
+    whenMovieSelected(movie) {
+        this.props.setCurrentMovieSelected(movie);
+    }
+
+    showMovieByAutoComplete() {
+        if (this.props.movieSelected) {
+            this.props.showMovieFromAutoComplete(this.props.movieSelected);
+        }
+    }
+
+    whenClearAction() {
+        this.props.clearMovieFromAutoComplete();
+        this.getMovies(this.props.page);
     }
 
     renderPagination() {
-        // if (this.props.isLoaded) {
+        if (!this.props.isMovieByAutoComplete) {
             return <PaginationContainer>
                 <FlatPagination
-                    offset={this.props.page}
+                    offset={this.props.offset}
                     limit={this.props.limit}
                     total={this.props.total_pages}
                     onClick={(e, offset) => this.setPage(offset)}
                 ></FlatPagination>
             </PaginationContainer>;
-        // }
+        }
+        return <div></div>;
+    }
+
+    renderSearchAction() {
+        if (!this.props.isMovieByAutoComplete) {
+            return <SearchIcon onClick={() => this.showMovieByAutoComplete()}></SearchIcon>;
+        }
+        return <CloseIcon onClick={() => this.whenClearAction()}></CloseIcon>;
     }
 
     render() {
         const {popularList} = this.props;
         return (
             <Fragment>
+                <SearcherContainer>
+                    <AutoComplete
+                        disabled={this.props.isMovieByAutoComplete}
+                        hintText={DefaultLocale['SEARCHER_HINT_TEXT']}
+                        dataSource={this.props.moviesAutoCompleteList}
+                        searchText={this.props.filter}
+                        onUpdateInput={(filter) => this.handleUpdateInput(filter)}
+                        onNewRequest={(movie) => this.whenMovieSelected(movie)}
+                        floatingLabelText={DefaultLocale['SEARCHER_MOVIE_LABEL']}
+                        fullWidth={true}
+                        filter={AutoComplete.noFilter}
+                        openOnFocus={true}
+                        animated={false}
+                        maxSearchResults={5}
+                        dataSourceConfig={this.dataSourceConfig}
+                    />{this.renderSearchAction()}
+                </SearcherContainer>
                 {this.renderPagination()}
                 <CardList items={popularList}
                           imageNameProperty='backdrop_path'
                           imageUrl={Api.getImageUrl()}></CardList>
                 {this.renderPagination()}
             </Fragment>
-        ); 
+        );
     }
 }
 
