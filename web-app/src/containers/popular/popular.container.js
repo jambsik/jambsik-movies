@@ -141,6 +141,7 @@ class ConnectedPopularMovies extends Component {
                 </SearcherContainer>
                 {this.renderPagination()}
                 <CardList items={popularList}
+                          to={'/detail'}
                           imageNameProperty='backdrop_path'
                           imageUrl={Api.getImageUrl()}></CardList>
                 {this.renderPagination()}

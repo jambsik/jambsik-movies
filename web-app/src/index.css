@@ -10,6 +10,10 @@ body, html {
     color: rgba(255, 255, 255, .68);
 }
 
+a{
+    text-decoration: none;
+}
+
 .root {
     width: 100%;
     height: 100%;

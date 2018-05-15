@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import styled from 'react-emotion';
 import {GridList, GridTile} from 'material-ui/GridList';
 import ImageIcon from 'material-ui/svg-icons/image/image'
+import {Link} from 'react-router-dom';
 
 const CardsListContainer = styled('div')`   
     padding: 1.5rem;
@@ -22,6 +23,10 @@ const ImageIconStyle = {
 const gridListStyle = {
     width: 'auto'
 };
+const gridStyle = {
+    cursor: 'pointer'
+};
+
 
 class CardList extends Component {
     getImage(image) {
@@ -37,6 +42,10 @@ class CardList extends Component {
         return <IconContainer> <ImageIcon style={ImageIconStyle}></ImageIcon></IconContainer>;
     }
 
+    onNavigateStart(id) {
+        alert(id);
+    }
+
     render() {
         return (
             <CardsListContainer>
@@ -44,16 +53,20 @@ class CardList extends Component {
                     cols={4}
                     cellHeight={200}
                     padding={2}
-                    style={gridListStyle}
+                    style={{gridListStyle}}
                 >
                     {
                         this.props.items.map((tile, index) => {
                                 return (
-                                    <GridTile key={`${tile.title}_${index}`}
-                                              title={tile.title}
-                                    >
-                                        {this.renderImage(tile)}
-                                    </GridTile>
+                                    <Link key={index} onClick={()=>this.onNavigateStart(tile.id)}
+                                          to={`${this.props.to}/${tile.id}`}>
+                                        <GridTile
+                                            key={`${tile.title}_${index}`}
+                                            title={tile.title}
+                                            style={gridStyle}>
+                                            {this.renderImage(tile)}
+                                        </GridTile>
+                                    </Link>
                                 );
                             }
                         )

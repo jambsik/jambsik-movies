@@ -6,6 +6,10 @@ import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import Home from './pages/home/home.page';
+import {ConnectedRouter} from 'react-router-redux';
+import Detail from './pages/detail/detail.page';
+import {history} from './store';
+import {Route, Switch} from 'react-router';
 
 const RootContainer = styled('div')`
     display:flex;
@@ -36,7 +40,14 @@ class App extends Component {
                         <Header/>
                         <RootContainer>
                             <AppContainer>
-                                <Home></Home>
+                                <ConnectedRouter history={history}>
+                                    <Fragment>
+                                        <Switch>
+                                            <Route path='/detail' component={Detail}/>
+                                            <Route path='/' component={Home}/>
+                                        </Switch>
+                                    </Fragment>
+                                </ConnectedRouter>
                             </AppContainer>
                         </RootContainer>
                     </Fragment>
