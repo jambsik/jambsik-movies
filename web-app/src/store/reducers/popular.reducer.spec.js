@@ -149,7 +149,7 @@ describe('@Popular reducer', () => {
     it(`Should handle ${TYPES.SHOW_MOVIE_FROM_AUTOCOMPLETE}`, () => {
         expect(popularReducer(mock_state, {
             type: TYPES.SHOW_MOVIE_FROM_AUTOCOMPLETE,
-            payload: movie
+            payload: [movie]
         })).toEqual({
             ...mock_state,
             ...{

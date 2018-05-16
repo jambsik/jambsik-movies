@@ -43,7 +43,7 @@ class App extends Component {
                                 <ConnectedRouter history={history}>
                                     <Fragment>
                                         <Switch>
-                                            <Route path='/detail' component={Detail}/>
+                                            <Route path='/detail/:movieId' component={Detail}/>
                                             <Route path='/' component={Home}/>
                                         </Switch>
                                     </Fragment>

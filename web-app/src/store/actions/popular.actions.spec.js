@@ -31,6 +31,7 @@ describe('@Popular actions', () => {
             LOADED_MOVIES_AUTOCOMPLETE: 'LOADED_MOVIES_AUTOCOMPLETE',
             SHOW_MOVIE_FROM_AUTOCOMPLETE: 'SHOW_MOVIE_FROM_AUTOCOMPLETE',
             CLEAR_MOVIE_FROM_AUTOCOMPLETE: 'CLEAR_MOVIE_FROM_AUTOCOMPLETE',
+            WHEN_NAVIGATE_TO_DETAIL: "WHEN_NAVIGATE_TO_DETAIL"
         });
     });
 
@@ -113,7 +114,7 @@ describe('@Popular actions', () => {
 
     // clearMovieFromAutoComplete
     it(`Should Clear current Movie selected From Auto complete`, () => {
-        expect(actions.clearMovieFromAutoComplete()).toEqual({ type: TYPES.CLEAR_MOVIE_FROM_AUTOCOMPLETE});
+        expect(actions.clearMovieFromAutoComplete()).toEqual({type: TYPES.CLEAR_MOVIE_FROM_AUTOCOMPLETE});
     });
 
 });

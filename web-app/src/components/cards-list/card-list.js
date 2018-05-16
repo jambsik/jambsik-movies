@@ -42,10 +42,6 @@ class CardList extends Component {
         return <IconContainer> <ImageIcon style={ImageIconStyle}></ImageIcon></IconContainer>;
     }
 
-    onNavigateStart(id) {
-        alert(id);
-    }
-
     render() {
         return (
             <CardsListContainer>
@@ -58,7 +54,8 @@ class CardList extends Component {
                     {
                         this.props.items.map((tile, index) => {
                                 return (
-                                    <Link key={index} onClick={()=>this.onNavigateStart(tile.id)}
+                                    <Link key={index}
+                                          onClick={() => this.props.whenNavigateToDetail(tile)}
                                           to={`${this.props.to}/${tile.id}`}>
                                         <GridTile
                                             key={`${tile.title}_${index}`}

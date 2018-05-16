@@ -38,7 +38,8 @@ const mapDispatchProps = dispatch => ({
     beforeMoviesAutoComplete: () => dispatch(Actions.beforeMoviesAutoComplete()),
     loadedMoviesAutoComplete: data => dispatch(Actions.loadedMoviesAutoComplete(data)),
     showMovieFromAutoComplete: movie => dispatch(Actions.showMovieFromAutoComplete(movie)),
-    clearMovieFromAutoComplete: () => dispatch(Actions.clearMovieFromAutoComplete())
+    clearMovieFromAutoComplete: () => dispatch(Actions.clearMovieFromAutoComplete()),
+    whenNavigateToDetail: movie => dispatch(Actions.whenNavigateToDetail(movie))
 });
 
 class ConnectedPopularMovies extends Component {
@@ -57,8 +58,7 @@ class ConnectedPopularMovies extends Component {
 
     getMoviesBySearch() {
         this.props.beforeMoviesAutoComplete();
-        Api.popularListSearch(this.props.filter)
-            .then(data => this.props.loadedMoviesAutoComplete(data));
+        return Api.popularListSearch(this.props.filter);
     }
 
     setPage(offset) {
@@ -70,7 +70,13 @@ class ConnectedPopularMovies extends Component {
     handleUpdateInput(filter) {
         this.props.setFilterMoviesAutoComplete(filter);
         if (this.props.filter && this.props.filter.length >= 2) {
-            this.getMoviesBySearch();
+            let interval = setInterval(() => {
+                this.getMoviesBySearch()
+                    .then(data => {
+                        this.props.loadedMoviesAutoComplete(data);
+                        clearInterval(interval);
+                    });
+            }, 300);
         }
     }
 
@@ -83,14 +89,26 @@ class ConnectedPopularMovies extends Component {
 
 
     whenMovieSelected(movie) {
-        this.props.setCurrentMovieSelected(movie);
+        if (movie && movie.id) {
+            this.props.setCurrentMovieSelected([movie]);
+        }
     }
 
     showMovieByAutoComplete() {
         if (this.props.movieSelected) {
-            this.props.showMovieFromAutoComplete(this.props.movieSelected);
+            this.props.showMovieFromAutoComplete([this.props.movieSelected]);
+        } else {
+            this.getMoviesBySearch()
+                .then(data => this.props.showMovieFromAutoComplete(data.results));
         }
     }
+
+    handleKeyPress(e) {
+        if (e.key === 'Enter') {
+            this.showMovieByAutoComplete();
+        }
+    }
+
 
     whenClearAction() {
         this.props.clearMovieFromAutoComplete();
@@ -136,12 +154,14 @@ class ConnectedPopularMovies extends Component {
                         openOnFocus={true}
                         animated={false}
                         maxSearchResults={5}
+                        onKeyPress={(e) => this.handleKeyPress(e)}
                         dataSourceConfig={this.dataSourceConfig}
                     />{this.renderSearchAction()}
                 </SearcherContainer>
                 {this.renderPagination()}
                 <CardList items={popularList}
                           to={'/detail'}
+                          whenNavigateToDetail={this.props.whenNavigateToDetail}
                           imageNameProperty='backdrop_path'
                           imageUrl={Api.getImageUrl()}></CardList>
                 {this.renderPagination()}

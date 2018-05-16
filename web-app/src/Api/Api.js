@@ -16,8 +16,13 @@ export class Api {
         return fetch(url, {...this._options, ...opts, method, ...this._headers});
     }
 
-    static getMovies(page, opts = {}) {
+    static getMovies(page = 1, opts = {}) {
         return this._method('GET', `${this._movie_url('movie/popular')}&page=${page}`, opts)
+            .then(res => res.json());
+    }
+
+    static getMovie(id, opts = {}) {
+        return this._method('GET', `${this._movie_url(`movie/${id}`)}`, opts)
             .then(res => res.json());
     }
 
@@ -25,7 +30,7 @@ export class Api {
         return `${config.API_MOVIE_IMAGES_URL}/${size}`;
     }
 
-    static popularListSearch(filter, page) {
+    static popularListSearch(filter, page = 1) {
         return this._method('GET', `${this._movie_url('search/movie')}&page=${page}&query=${filter}&sort_by=popularity.desc`)
             .then(res => res.json());
     }

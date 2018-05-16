@@ -70,7 +70,7 @@ const popularReducer = (state = initialState, action) => {
             return {
                 ...state,
                 isMovieByAutoComplete: true,
-                popularList: [action.payload]
+                popularList: action.payload
             };
         case TYPES.CLEAR_MOVIE_FROM_AUTOCOMPLETE:
             return {
@@ -80,6 +80,11 @@ const popularReducer = (state = initialState, action) => {
                 moviesAutoCompleteList: [],
                 isMovieByAutoComplete: false,
                 popularList: []
+            };
+        case TYPES.WHEN_NAVIGATE_TO_DETAIL:
+            return {
+                ...state,
+                movieSelected: action.payload.movie
             };
         default:
             return state;
