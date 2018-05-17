@@ -78,7 +78,7 @@ class ConnectedMovie extends Component {
             return <Fragment>
                 {this.renderImage(this.props.movie, 'poster_path')}
                 <InfoContainer>
-                    <h1>{this.checkProperty(this.props.movie, 'title')} ({this.checkProperty(this.props.movie, 'tagline')})</h1>
+                    <h1>{this.checkProperty(this.props.movie, 'title')} {this.checkProperty(this.props.movie, 'tagline')}</h1>
                     <p>{this.props.movie.overview}</p>
                     {this.renderCompoany(this.props.movie)}
                     <p>
