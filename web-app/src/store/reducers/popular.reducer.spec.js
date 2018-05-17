@@ -176,7 +176,7 @@ describe('@Popular reducer', () => {
     it(`Should handle ${TYPES.WHEN_NAVIGATE_TO_DETAIL}`, () => {
         expect(popularReducer(mock_state, {
             type: TYPES.WHEN_NAVIGATE_TO_DETAIL,
-            payload: {movie}
+            payload: {movie }
         })).toEqual({
             ...mock_state,
             ...{
