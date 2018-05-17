@@ -90,7 +90,7 @@ class ConnectedPopularMovies extends Component {
 
     whenMovieSelected(movie) {
         if (movie && movie.id) {
-            this.props.setCurrentMovieSelected([movie]);
+            this.props.setCurrentMovieSelected(movie);
         }
     }
 
