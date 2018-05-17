@@ -86,6 +86,14 @@ const popularReducer = (state = initialState, action) => {
                 ...state,
                 movieSelected: action.payload.movie
             };
+        case TYPES.WHEN_NAVIGATE_TO_HOME:
+            return {
+                ...state,
+                movieSelected: null,
+                filter: '',
+                moviesAutoCompleteList: [],
+                isMovieByAutoComplete: false
+            };
         default:
             return state;
     }

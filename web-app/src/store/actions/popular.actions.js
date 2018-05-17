@@ -10,6 +10,7 @@ export const TYPES = {
     SHOW_MOVIE_FROM_AUTOCOMPLETE: 'SHOW_MOVIE_FROM_AUTOCOMPLETE',
     CLEAR_MOVIE_FROM_AUTOCOMPLETE: 'CLEAR_MOVIE_FROM_AUTOCOMPLETE',
     WHEN_NAVIGATE_TO_DETAIL: 'WHEN_NAVIGATE_TO_DETAIL',
+    WHEN_NAVIGATE_TO_HOME: 'WHEN_NAVIGATE_TO_HOME'
 };
 
 
@@ -24,3 +25,4 @@ export const loadedMoviesAutoComplete = data => ({type: TYPES.LOADED_MOVIES_AUTO
 export const showMovieFromAutoComplete = movie => ({type: TYPES.SHOW_MOVIE_FROM_AUTOCOMPLETE, payload: movie});
 export const clearMovieFromAutoComplete = () => ({type: TYPES.CLEAR_MOVIE_FROM_AUTOCOMPLETE});
 export const whenNavigateToDetail = movie => ({type: TYPES.WHEN_NAVIGATE_TO_DETAIL, payload: {movie}});
+export const whenNavigateToHome = () => ({type: TYPES.WHEN_NAVIGATE_TO_HOME});

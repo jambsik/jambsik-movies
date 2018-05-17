@@ -12,7 +12,8 @@ const mapStateProps = state => ({
     movie: state.popularReducer.movieSelected
 });
 const mapDispatchProps = dispatch => ({
-    setMovie: movie => dispatch(Actions.setCurrentMovieSelected(movie))
+    setMovie: movie => dispatch(Actions.setCurrentMovieSelected(movie)),
+    whenNavigateToHome: () => dispatch(Actions.whenNavigateToHome())
 });
 const MovieContainer = styled('div')`
     display:flex;
@@ -83,6 +84,7 @@ class ConnectedMovie extends Component {
                 {this.renderImage(this.props.movie, 'poster_path')}
                 <InfoContainer>
                     <Link key={this.checkProperty(this.props.movie, 'id')}
+                          onClick={() => this.props.whenNavigateToHome()}
                           to={`/home`}>
                         <ReturnPageContainer><ArrowBack></ArrowBack>{DefaultLocale.GO_HOME}</ReturnPageContainer>
                     </Link>
