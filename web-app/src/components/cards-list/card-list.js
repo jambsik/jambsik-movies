@@ -3,6 +3,7 @@ import styled from 'react-emotion';
 import {GridList, GridTile} from 'material-ui/GridList';
 import ImageIcon from 'material-ui/svg-icons/image/image'
 import {Link} from 'react-router-dom';
+import DefaultLocale from '../../common/locale/default.locale';
 
 const CardsListContainer = styled('div')`   
     padding: 1.5rem;
@@ -11,9 +12,13 @@ const CardsListContainer = styled('div')`
     justifyContent: 'space-around';
 `;
 const IconContainer = styled('div')`   
-    flex-direction: row;
+    flex-direction: column;
     display: flex;
-    justify-content: center;
+    align-items: center;
+    span{
+        color: rgb(255,255,255);
+        font-size: 0.8rem;
+    }
 `;
 const ImageIconStyle = {
     width: '6.7rem',
@@ -39,7 +44,10 @@ class CardList extends Component {
             const image = this.getImage(tileImage);
             return <img src={image} alt={tile.title}/>;
         }
-        return <IconContainer> <ImageIcon style={ImageIconStyle}></ImageIcon></IconContainer>;
+        return <IconContainer>
+            <ImageIcon style={ImageIconStyle}></ImageIcon>
+            <span>{DefaultLocale.IMAGE_NO_AVAILABLE}</span>
+        </IconContainer>;
     }
 
     render() {

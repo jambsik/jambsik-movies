@@ -4,5 +4,7 @@ export default {
     'SEARCHER_HINT_TEXT': 'Write min 3 letters...',
     'RELEASE_DATE': 'Release date:',
     'RATING': 'Rating:',
-    'RATING_COUNT': 'Rating count:'
+    'RATING_COUNT': 'Rating count:',
+    'GO_HOME': 'Go to home page',
+    "IMAGE_NO_AVAILABLE": "Image no available"
 };

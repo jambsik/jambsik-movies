@@ -104,7 +104,7 @@ class ConnectedPopularMovies extends Component {
     }
 
     handleKeyPress(e) {
-        if (e.key === 'Enter') {
+        if (e.charCode === 13 && this.props.filter && this.props.filter.length >= 2) {
             this.showMovieByAutoComplete();
         }
     }

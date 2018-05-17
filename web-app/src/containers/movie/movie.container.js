@@ -2,10 +2,11 @@ import React, {Component, Fragment} from 'react';
 import styled from 'react-emotion';
 import * as Actions from '../../store/actions/popular.actions';
 import {Api} from '../../Api/Api';
-import ImageIcon from 'material-ui/svg-icons/image/image'
+import ArrowBack from 'material-ui/svg-icons/navigation/arrow-back';
 import {withRouter} from 'react-router';
 import {connect} from 'react-redux';
 import DefaultLocale from '../../common/locale/default.locale';
+import {Link} from 'react-router-dom';
 
 const mapStateProps = state => ({
     movie: state.popularReducer.movieSelected
@@ -17,6 +18,15 @@ const MovieContainer = styled('div')`
     display:flex;
     flex-direction:row;
     justify-content: center;
+    a{
+        color:rgb(255,255,255);
+    }
+`;
+const ReturnPageContainer = styled('div')`
+    display:flex;
+    flex-direction:row;
+    cursor:pointer;
+    align-items: center;
 `;
 const InfoContainer = styled('div')`
     display:flex;
@@ -38,10 +48,6 @@ const CompanyContainer = styled('div')`
     margin-bottom: 1.5rem;
 `;
 
-const ImageIconStyle = {
-    width: '36.7rem',
-    height: '6.7rem'
-};
 
 class ConnectedMovie extends Component {
     constructor(props) {
@@ -59,14 +65,12 @@ class ConnectedMovie extends Component {
         if (companies && companies.length > 0) {
             return <CompanyContainer>{this.renderImage(companies[0], 'logo_path', 'name')}</CompanyContainer>;
         }
-        return this.renderImage();
     }
 
     renderImage(tile, tilePropertyImg, alt = 'title') {
         if (tile && tile[tilePropertyImg]) {
             return <img src={`${Api.getImageUrl()}/${tile[tilePropertyImg]}`} alt={tile[alt]}/>;
         }
-        return <ImageIcon style={ImageIconStyle}></ImageIcon>;
     }
 
     checkProperty(movie, property) {
@@ -78,6 +82,10 @@ class ConnectedMovie extends Component {
             return <Fragment>
                 {this.renderImage(this.props.movie, 'poster_path')}
                 <InfoContainer>
+                    <Link key={this.checkProperty(this.props.movie, 'id')}
+                          to={`/home`}>
+                        <ReturnPageContainer><ArrowBack></ArrowBack>{DefaultLocale.GO_HOME}</ReturnPageContainer>
+                    </Link>
                     <h1>{this.checkProperty(this.props.movie, 'title')} {this.checkProperty(this.props.movie, 'tagline')}</h1>
                     <p>{this.props.movie.overview}</p>
                     {this.renderCompoany(this.props.movie)}
