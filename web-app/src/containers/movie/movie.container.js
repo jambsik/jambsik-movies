@@ -1,16 +1,16 @@
 import React, {Component, Fragment} from 'react';
 import styled from 'react-emotion';
 import * as Actions from '../../store/actions/popular.actions';
-import {connect} from 'react-redux';
 import {Api} from '../../Api/Api';
+import ImageIcon from 'material-ui/svg-icons/image/image'
 import {withRouter} from 'react-router';
-import {Card, CardHeader, CardText, CardTitle} from 'material-ui/Card';
+import {connect} from 'react-redux';
+import DefaultLocale from '../../common/locale/default.locale';
 
 const mapStateProps = state => ({
     movie: state.popularReducer.movieSelected
 });
 const mapDispatchProps = dispatch => ({
-    beforeLoadedPopularMovies: () => dispatch(Actions.beforeLoaded()),
     setMovie: movie => dispatch(Actions.setCurrentMovieSelected(movie))
 });
 const MovieContainer = styled('div')`
@@ -18,8 +18,29 @@ const MovieContainer = styled('div')`
     flex-direction:row;
     justify-content: center;
 `;
-const styleCard = {
-    width: '32rem'
+const InfoContainer = styled('div')`
+    display:flex;
+    flex-direction: column;
+    margin-left: 3rem;
+    p{
+        display:flex;
+        flex-direction:row;
+    }
+`;
+const InfoContainerText = styled('span')`
+    padding-right: 1.5rem;
+`;
+const CompanyContainer = styled('div')`
+    margin-top:1.5rem;
+    display:flex;
+    flex-direction:row;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+`;
+
+const ImageIconStyle = {
+    width: '36.7rem',
+    height: '6.7rem'
 };
 
 class ConnectedMovie extends Component {
@@ -29,28 +50,56 @@ class ConnectedMovie extends Component {
     }
 
     getMovie() {
-        if (this.props.movie) {
-            return this.props.movie.title;
-        } else {
-            Api.getMovie(this.props.match.params.movieId)
-                .then(movie => this.props.setMovie(movie));
+        Api.getMovie(this.props.match.params.movieId)
+            .then(movie => this.props.setMovie(movie));
+    }
+
+    renderCompoany(movie) {
+        const companies = movie.production_companies;
+        if (companies && companies.length > 0) {
+            return <CompanyContainer>{this.renderImage(companies[0], 'logo_path', 'name')}</CompanyContainer>;
         }
+        return this.renderImage();
+    }
+
+    renderImage(tile, tilePropertyImg, alt = 'title') {
+        if (tile && tile[tilePropertyImg]) {
+            return <img src={`${Api.getImageUrl()}/${tile[tilePropertyImg]}`} alt={tile[alt]}/>;
+        }
+        return <ImageIcon style={ImageIconStyle}></ImageIcon>;
+    }
+
+    checkProperty(movie, property) {
+        return movie && movie[property] ? movie[property] : ''
     }
 
     renderMovie() {
         if (this.props.movie) {
             return <Fragment>
-                <img src={`${Api.getImageUrl()}/${this.props.movie.poster_path}`}/>
-                <Card>
-                    <CardHeader
-                        title={this.props.movie.title}
-                        subtitle={this.props.movie.tagline}
-                        style={styleCard}
-                    />
-                    <CardText>
-                        {this.props.movie.overview}
-                    </CardText>
-                </Card>
+                {this.renderImage(this.props.movie, 'poster_path')}
+                <InfoContainer>
+                    <h1>{this.checkProperty(this.props.movie, 'title')} ({this.checkProperty(this.props.movie, 'tagline')})</h1>
+                    <p>{this.props.movie.overview}</p>
+                    {this.renderCompoany(this.props.movie)}
+                    <p>
+                        <InfoContainerText>
+                            {DefaultLocale.RELEASE_DATE}
+                        </InfoContainerText>
+                        {this.checkProperty(this.props.movie, 'release_date')}
+                    </p>
+                    <p>
+                        <InfoContainerText>
+                            {DefaultLocale.RATING}
+                        </InfoContainerText>
+                        {this.checkProperty(this.props.movie, 'vote_average')}
+                    </p>
+                    <p>
+                        <InfoContainerText>
+                            {DefaultLocale.RATING_COUNT}
+                        </InfoContainerText>
+                        {this.checkProperty(this.props, 'movie.vote_count')}
+                    </p>
+                </InfoContainer>
             </Fragment>;
         }
     }

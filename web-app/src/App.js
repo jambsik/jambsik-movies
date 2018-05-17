@@ -23,7 +23,6 @@ const AppContainer = styled('div')`
     display:flex;
     flex-direction:column;
     flex: 1 100%;
-    min-height:1200px;
 `;
 
 class App extends Component {
