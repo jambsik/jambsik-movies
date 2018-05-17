@@ -5,7 +5,7 @@ This project was generated with  [create-react-app](https://github.com/facebook/
 You need install in your computer [node](https://nodejs.org/es/download) and
  [yarn](https://yarnpkg.com/lang/en/docs/install/#windows-stable)
  
- Go to the this project folder web-app and type in your terminal:
+ Go to the folder /web-app and type in your terminal:
  
  ``
  yarn install
@@ -20,7 +20,7 @@ You can navigate to ``http://localhost:3000/`` after type in your terminal:
  yarn start
  ``
  # Running tests 
- to execute react app test via  [jest](https://facebook.github.io/jest/), 
+ To execute react app test via  [jest](https://facebook.github.io/jest/), 
  type in your terminal:
  
   ``
@@ -35,7 +35,7 @@ Generate build distribution use:
   
 # Deploying
 
-If you will deploy via firebase cli. You can edit. firebaserc and [read this guide](https://firebase.google.com/docs/cli/?hl=es-419). 
+If you will deploy via firebase cli. You can edit firebaserc and [read this guide](https://firebase.google.com/docs/cli/?hl=es-419). 
 
 
 # Help
