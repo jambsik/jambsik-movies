@@ -173,5 +173,29 @@ describe('@Popular reducer', () => {
             }
         });
     });
+    it(`Should handle ${TYPES.WHEN_NAVIGATE_TO_DETAIL}`, () => {
+        expect(popularReducer(mock_state, {
+            type: TYPES.WHEN_NAVIGATE_TO_DETAIL,
+            payload: {movie}
+        })).toEqual({
+            ...mock_state,
+            ...{
+                movieSelected: movie
+            }
+        });
+    });
+    it(`Should handle ${TYPES.WHEN_NAVIGATE_TO_HOME}`, () => {
+        expect(popularReducer(mock_state, {
+            type: TYPES.WHEN_NAVIGATE_TO_HOME
+        })).toEqual({
+            ...mock_state,
+            ...{
+                movieSelected: null,
+                filter: '',
+                moviesAutoCompleteList: [],
+                isMovieByAutoComplete: false
+            }
+        });
+    });
 });
 
