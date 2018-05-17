@@ -1,3 +1,5 @@
+# DEMO:
+ You can see the demo app in: [movies-by-jambsik](https://movies-by-jambsik.firebaseapp.com)
 # Jambsik Movies App 
 
 This project was generated with  [create-react-app](https://github.com/facebook/create-react-app) v1.1.4. 
