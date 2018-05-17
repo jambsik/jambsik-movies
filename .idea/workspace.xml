@@ -1,16 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/web-app/README.md" line="4" />
+    <bookmark url="file://$PROJECT_DIR$/web-app/README.md" line="2103" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8f24da87-e75a-4006-abff-e66b5982dc46" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/jambsik-movies.iml" afterPath="$PROJECT_DIR$/.idea/jambsik-movies.iml" />
-      <change beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
       <change beforePath="$PROJECT_DIR$/web-app/README.md" afterPath="$PROJECT_DIR$/web-app/README.md" />
-      <change beforePath="$PROJECT_DIR$/web-app/package.json" afterPath="$PROJECT_DIR$/web-app/package.json" />
-      <change beforePath="$PROJECT_DIR$/web-app/src/store/reducers/popular.reducer.spec.js" afterPath="$PROJECT_DIR$/web-app/src/store/reducers/popular.reducer.spec.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -28,8 +24,8 @@
         <entry file="file://$PROJECT_DIR$/web-app/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="351">
-                <caret line="41" column="24" lean-forward="false" selection-start-line="41" selection-start-column="24" selection-end-line="41" selection-end-column="24" />
+              <first_editor relative-caret-position="459">
+                <caret line="2444" column="0" lean-forward="true" selection-start-line="2444" selection-start-column="0" selection-end-line="2444" selection-end-column="0" />
                 <folding />
               </first_editor>
               <second_editor />
@@ -148,6 +144,7 @@
         <option value="$PROJECT_DIR$/web-app/src/store/actions/popular.actions.spec.js" />
         <option value="$PROJECT_DIR$/web-app/src/store/reducers/popular.reducer.spec.js" />
         <option value="$PROJECT_DIR$/web-app/package.json" />
+        <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/web-app/README.md" />
       </list>
     </option>
@@ -168,8 +165,8 @@
     <handled-path value="$PROJECT_DIR$/web-app/node_modules" />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="524" />
-    <option name="width" value="1403" />
+    <option name="x" value="220" />
+    <option name="width" value="1707" />
     <option name="height" value="1047" />
   </component>
   <component name="ProjectLevelVcsManager">
@@ -304,7 +301,7 @@
       <workItem from="1526544789444" duration="671000" />
       <workItem from="1526545509376" duration="401000" />
       <workItem from="1526546975373" duration="210000" />
-      <workItem from="1526547204765" duration="2138000" />
+      <workItem from="1526547204765" duration="2286000" />
     </task>
     <servers />
   </component>
@@ -341,7 +338,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="99378000" />
+    <option name="totallyTimeSpent" value="99526000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -353,17 +350,17 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="524" y="0" width="1403" height="1047" extended-state="0" />
+    <frame x="220" y="0" width="1707" height="1047" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29043478" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.289994" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32924107" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32924107" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32924107" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.41964287" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24893162" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30580357" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30691963" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3828125" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -576,13 +573,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web-app/firebase.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="46">
@@ -732,6 +722,22 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="966">
+            <caret line="42" column="0" lean-forward="true" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
+            <folding />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/web-app/README.md">
       <provider editor-type-id="text-editor">
         <state relative-caret-position="23">
@@ -741,8 +747,8 @@
       </provider>
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="351">
-            <caret line="41" column="24" lean-forward="false" selection-start-line="41" selection-start-column="24" selection-end-line="41" selection-end-column="24" />
+          <first_editor relative-caret-position="459">
+            <caret line="2444" column="0" lean-forward="true" selection-start-line="2444" selection-start-column="0" selection-end-line="2444" selection-end-column="0" />
             <folding />
           </first_editor>
           <second_editor />
