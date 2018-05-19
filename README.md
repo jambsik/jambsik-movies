@@ -1,4 +1,4 @@
-# DEMO:
+# DEMO
  You can see the demo app in: [movies-by-jambsik](https://movies-by-jambsik.firebaseapp.com)
 # Jambsik Movies App 
 
